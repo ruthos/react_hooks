@@ -1,11 +1,28 @@
-import React from "react";
-import "./styles.css";
+import React, { useState } from "react";
 
-export default function App() {
+const App = () => {
+  const [value, setValue] = useState("ok");
+
+  const handleClick = () => {
+    setValue("");
+  };
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+      <button onClick={handleClick}>click</button>
+      <input
+        type="text"
+        value={value}
+        placeholder="podaj napis"
+        onChange={handleChange}
+      />
+      <h1>{value}</h1>
     </div>
   );
-}
+};
+
+export default App;
