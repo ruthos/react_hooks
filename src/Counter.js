@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AppContext } from "./AppContext";
 
 const Counter = () => {
   const [count, setCount] = useState(0);
@@ -69,10 +70,14 @@ const MathButton = ({ type, number, name, click }) => {
 };
 
 const ResultPanel = ({ count, result }) => {
+  const theme = useContext(AppContext);
+
+  console.log(theme);
+
   return (
     <>
       <h1>
-        Liczba kliknięć: {count}
+        {<p style={{ color: theme }}>Liczba kliknięć: {count}</p>}
         {count > 10 ? <span>. Przeciążenie procesora!</span> : null}
       </h1>
       <h1>Wynik: {result}</h1>

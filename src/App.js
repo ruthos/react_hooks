@@ -1,11 +1,9 @@
 import React, { useState } from "react";
+import { AppContext } from "./AppContext";
+import Counter from "./Counter";
 
 const App = () => {
   const [value, setValue] = useState("ok");
-
-  const handleClick = () => {
-    setValue("");
-  };
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -13,14 +11,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <button onClick={handleClick}>click</button>
-      <input
-        type="text"
-        value={value}
-        placeholder="podaj napis"
-        onChange={handleChange}
-      />
-      <h1>{value}</h1>
+      <AppContext.Provider value="blue">
+        <Counter />
+      </AppContext.Provider>
     </div>
   );
 };
